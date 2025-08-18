@@ -1,0 +1,194 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChambAPP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="toast" class="toast-message"></div>
+
+    <div id="login-register" class="pantalla visible">
+        <h1>ChambAPP</h1>
+        <div id="toast-login" class="toast-message"></div>
+        <input type="text" id="usernameInput" placeholder="Nombre de usuario" />
+        <input type="password" id="passwordInput" placeholder="Contraseña" />
+        <button id="loginBtn">Iniciar Sesión</button>
+        <button id="registerBtn">Registrarse</button>
+    </div>
+
+    <div id="menu-principal" class="pantalla">
+        <span id="saludoUsuario" class="saludo"></span>
+        <h2>Menú Principal</h2>
+        <div class="menu-acciones">
+            <button id="btnVerPedidos">Ver Pedidos</button>
+            <button id="btnCrearPedido">Crear Pedido</button>
+            <button id="btnVerPerfil">Mi Perfil</button>
+            <button id="btnBuscarUsuarios">Buscar Usuarios</button>
+            <button id="btnVerChat">Mis Chats</button>
+            <button id="btn-ir-a-reportes">Reportes</button>
+        </div>
+        <button id="logoutBtn">Cerrar Sesión</button>
+    </div>
+
+    <div id="ver-pedidos" class="pantalla">
+        <h2>Pedidos Recientes</h2>
+        <div id="pedidos-list"></div>
+        <button id="volver-a-menu-principal">Volver</button>
+    </div>
+
+    <div id="crear-pedido" class="pantalla">
+        <h2>Crear Nuevo Pedido</h2>
+        <input type="text" id="inputTitulo" placeholder="Título del pedido" />
+        <textarea id="inputDescripcion" placeholder="Descripción detallada del pedido"></textarea>
+        <div class="input-group">
+            <label for="tipoServicio">Tipo de Servicio:</label>
+            <select id="tipoServicio">
+                <option value="Servicio">Servicio</option>
+                <option value="Producto">Producto</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria">
+                <option value="Hogar">Hogar</option>
+                <option value="Reparaciones">Reparaciones</option>
+                <option value="Servicios IT">Servicios IT</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Ropa">Ropa</option>
+                <option value="Otros">Otros</option>
+            </select>
+        </div>
+        <div id="ropa-fields" style="display: none;">
+            <input type="text" id="inputTalla" placeholder="Talla" />
+            <input type="text" id="inputGenero" placeholder="Género" />
+            <input type="text" id="inputMaterial" placeholder="Material" />
+        </div>
+        <div class="input-group">
+            <label for="urgencia">Urgencia:</label>
+            <select id="urgencia">
+                <option value="Alta">Alta</option>
+                <option value="Media">Media</option>
+                <option value="Baja">Baja</option>
+            </select>
+        </div>
+        <input type="number" id="inputPrecio" placeholder="Precio sugerido (opcional)" min="0" />
+        <div class="direccion-input-group">
+            <input type="text" id="inputDireccion" placeholder="Dirección" />
+            <button id="btn-obtener-direccion">Obtener Dirección</button>
+        </div>
+        <label>
+            <input type="checkbox" id="isRopaCheckbox" /> Es Ropa
+        </label>
+        <button id="submitPedido">Publicar Pedido</button>
+        <button id="cancelar-crear-pedido">Cancelar</button>
+    </div>
+
+    <div id="mi-perfil" class="pantalla">
+        <h2>Mi Perfil</h2>
+        <div class="profile-header">
+            <img id="fotoPerfil" src="https://via.placeholder.com/120/1a1a2e/e0e0e0?text=👤" alt="Foto de perfil" />
+            <div class="profile-details">
+                <h3 id="profileUsername"></h3>
+                <p id="profileSlogan"></p>
+                <span id="profileRank" class="rank-badge"></span>
+            </div>
+        </div>
+        <div class="profile-info">
+            <p><strong>Biografía:</strong> <span id="profileBiografia"></span></p>
+            <p><strong>Contacto:</strong> <span id="profileContacto"></span></p>
+            <p><strong>Calificación promedio:</strong> <span id="profileRating"></span></p>
+        </div>
+        <div class="profile-actions">
+            <button id="btnEditarPerfil">Editar Perfil</button>
+            <button id="btnVolverPerfil">Volver</button>
+            <button id="btnVerCalificaciones">Ver Calificaciones</button>
+            <button id="btn-eliminar-cuenta">Eliminar Cuenta</button>
+        </div>
+    </div>
+
+    <div id="editar-perfil" class="pantalla">
+        <h2>Editar Perfil</h2>
+        <input type="text" id="inputSlogan" placeholder="Slogan" />
+        <textarea id="inputBiografia" placeholder="Biografía"></textarea>
+        <input type="text" id="inputContacto" placeholder="Contacto (email, teléfono, etc.)" />
+        <label>
+            <input type="checkbox" id="isPrivateCheckbox" /> Perfil Privado
+        </label>
+        <button id="btnGuardarPerfil">Guardar Cambios</button>
+        <button id="btnCancelarEditarPerfil">Cancelar</button>
+    </div>
+
+    <div id="buscar-usuarios" class="pantalla">
+        <h2>Buscar Usuarios</h2>
+        <input type="text" id="searchInput" placeholder="Buscar por nombre de usuario..." />
+        <div id="searchResults"></div>
+        <button id="btnVolverBuscar">Volver</button>
+    </div>
+
+    <div id="ver-chat" class="pantalla">
+        <h2>Mis Chats</h2>
+        <div id="chat-list"></div>
+        <button id="btnVolverChat">Volver</button>
+    </div>
+
+    <div id="chat-conversation" class="pantalla">
+        <h2 id="chatRecipientName"></h2>
+        <div id="message-list"></div>
+        <div class="chat-input-area">
+            <input type="text" id="chatMessageInput" placeholder="Escribe un mensaje..." />
+            <button id="btnSendMessage">Enviar</button>
+        </div>
+        <button id="btnVolverConversacion">Volver</button>
+    </div>
+
+    <div id="ver-calificaciones" class="pantalla">
+        <h2>Calificaciones de <span id="calificacionesDe"></span></h2>
+        <div id="calificaciones-list"></div>
+        <button id="btnVolverCalificaciones">Volver</button>
+    </div>
+
+    <div id="reportes-screen" class="pantalla">
+        <h2>Reportes</h2>
+        <button id="btn-ver-reportes-enviados">Ver Reportes Enviados</button>
+        <button id="btn-ver-reportes-recibidos">Ver Reportes Recibidos</button>
+        <button id="btn-crear-reporte">Crear Reporte</button>
+        <button id="btn-volver-reportes">Volver</button>
+    </div>
+    
+    <div id="crear-reporte-screen" class="pantalla">
+        <h2>Crear Reporte</h2>
+        <p>Selecciona un usuario para reportar:</p>
+        <div class="user-select-container">
+            <select id="select-usuario-reporte"></select>
+        </div>
+        <p>Motivo del reporte:</p>
+        <textarea id="motivo-reporte" placeholder="Describe la situación..."></textarea>
+        <button id="btn-enviar-reporte">Enviar Reporte</button>
+        <button id="btn-cancelar-reporte">Cancelar</button>
+    </div>
+    
+    <div id="ver-reportes-enviados-screen" class="pantalla">
+        <h2>Reportes Enviados</h2>
+        <div id="reportes-enviados-list"></div>
+        <button id="btn-volver-reportes-enviados">Volver</button>
+    </div>
+    
+    <div id="ver-reportes-recibidos-screen" class="pantalla">
+        <h2>Reportes Recibidos</h2>
+        <div id="reportes-recibidos-list"></div>
+        <button id="btn-volver-reportes-recibidos">Volver</button>
+    </div>
+
+    <div class="creditos">
+        <span>© 2024 ChambAPP</span>
+    </div>
+    <div class="version-info">
+        <span>Versión 1.0</span>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
