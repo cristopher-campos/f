@@ -62,6 +62,9 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
     const username = document.getElementById('loginUsername').value;
     const password = document.getElementById('loginPassword').value;
 
+    // --- Paso de depuración: Imprime el objeto de usuarios para ver qué se cargó ---
+    console.log("Usuarios cargados para el login:", usuarios);
+
     if (usuarios[username] && usuarios[username].password === password) {
         usuarioActual = username;
         localStorage.setItem('usuarioActual', usuarioActual);
@@ -579,3 +582,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial data save to ensure consistency
     saveData();
 });
+
